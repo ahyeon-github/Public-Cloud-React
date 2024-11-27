@@ -1,71 +1,52 @@
-# Getting Started with Create React App
+# public-cloud-React(Front-End)
+React를 사용하여 Spring Boot 서버에서 데이터를 읽어와 콘솔 또는 화면에 출력하였습니다.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 1. React 프로젝트 생성
+#### 1. React 프로젝트 초기화:
+```
+npx create-react-app user-client
+cd user-client
+```
+ 
+#### 2. React 프로젝트 실행:
+```
+npm start
+```
+ <br>
+ 
+## 2.Axios 설치
+React에서 데이터를 쉽게 가져오기 위해 Axios 라이브러리를 사용했습니다.
+```
+npm install axios
+```
+ <br>
+ 
+## 3. Spring Boot 서버 데이터 가져오기
+React에서 "http://localhost:8080/users" Spring Boot 서버의 엔드포인트에서 데이터를 가져오기 위해 App.js를 수정하였습니다.
 
-## Available Scripts
+```
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/users") // Spring Boot 서버의 엔드포인트
+      .then((response) => {
+        console.log(response.data); // 데이터를 콘솔에 출력
+        setUsers(response.data); // 데이터를 상태에 저장
+      })
+      .catch((error) => {
+        console.error("Error fetching users:", error);
+      });
+  }, []); // 빈 배열은 컴포넌트가 처음 렌더링될 때만 실행
+```
 
-In the project directory, you can run:
+ <br>
 
-### `npm start`
+## 4. CORS 설정
+React가 데이터를 요청할 때 CORS 문제가 발생할 수 있으므로 Spring Boot에서 이를 허용하도록 설정하였습니다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+ <br>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## 5. 결과 화면
+<img width="1527" alt="스크린샷 2024-11-27 오후 3 56 25" src="https://github.com/user-attachments/assets/e38fc057-4ff5-480e-ad7b-0e1512f00758">
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# Public-Cloud-React
